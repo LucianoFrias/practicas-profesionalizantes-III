@@ -8,7 +8,16 @@
     border-radius: 5px;
     box-shadow: 0 5px 5px #a3a3a3;
     border-bottom: 1px solid #ffffffaa;
+    transition:  all 0.3s;
 }
+
+.buttons:hover
+{
+    color: #ff0000;
+
+}
+
+
 .numericButtons {
     background-color: #0000ff;
 }
@@ -23,7 +32,17 @@
     background-color: #ff0000;
     width: 100%;
     height: 40px;
+    font-weight: 700;
+    transition: all 0.3s;
 }
+
+.deletionButton:hover
+{
+    background-color: transparent;
+    color:  #ff0000;
+
+}
+
 .inputBox{
     text-align: right;
     font-size: 10px;
