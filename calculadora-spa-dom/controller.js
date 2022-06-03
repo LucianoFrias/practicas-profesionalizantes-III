@@ -132,25 +132,26 @@
 
 	// Posicionando elementos en filas y columnas
 	posicionarElementoEnTabla( table, 0, 0, inputBox );
+	
 	posicionarElementoEnTabla( table, 1, 0, button7 );
-	posicionarElementoEnTabla( table, 1, 0, button8 );
-	posicionarElementoEnTabla( table, 1, 0, button9 );
-	posicionarElementoEnTabla( table, 1, 0, buttonAdd );
+	posicionarElementoEnTabla( table, 1, 1, button8 );
+	posicionarElementoEnTabla( table, 1, 2, button9 );
+	posicionarElementoEnTabla( table, 1, 3, buttonAdd );
 
 	posicionarElementoEnTabla( table, 2, 0, button4 );
-	posicionarElementoEnTabla( table, 2, 0, button5 );
-	posicionarElementoEnTabla( table, 2, 0, button6 );
-	posicionarElementoEnTabla( table, 2, 0, buttonMinus );
+	posicionarElementoEnTabla( table, 2, 1, button5 );
+	posicionarElementoEnTabla( table, 2, 2, button6 );
+	posicionarElementoEnTabla( table, 2, 3, buttonMinus );
 
 	posicionarElementoEnTabla( table, 3, 0, button1 );
-	posicionarElementoEnTabla( table, 3, 0, button2 );
-	posicionarElementoEnTabla( table, 3, 0, button3 );
-	posicionarElementoEnTabla( table, 3, 0, buttonMultiply );
+	posicionarElementoEnTabla( table, 3, 1, button2 );
+	posicionarElementoEnTabla( table, 3, 2, button3 );
+	posicionarElementoEnTabla( table, 3, 3, buttonMultiply );
 
 	posicionarElementoEnTabla( table, 4, 0, button0 );
-	posicionarElementoEnTabla( table, 4, 0, buttonDecimal );
-	posicionarElementoEnTabla( table, 4, 0, buttonEqual );
-	posicionarElementoEnTabla( table, 4, 0, buttonDivide );
+	posicionarElementoEnTabla( table, 4, 1, buttonDecimal );
+	posicionarElementoEnTabla( table, 4, 2, buttonEqual );
+	posicionarElementoEnTabla( table, 4, 3, buttonDivide );
 
 	posicionarElementoEnTabla( table, 5, 0, buttonDelete);
 
