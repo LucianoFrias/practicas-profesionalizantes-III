@@ -1,0 +1,59 @@
+.buttons {
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px #a3a3a3;
+    border-bottom: 1px solid #ffffffaa;
+    transition:  all 0.3s;
+}
+
+.buttons:hover
+{
+    color: #ff0000;
+
+}
+
+
+.numericButtons {
+    background-color: #0000ff;
+}
+.operationButtons {
+    background-color: #008000;
+}
+.equalButton {
+    background-color: #f3b407;
+}
+.deletionButton{
+    color: #ffffff;
+    background-color: #ff0000;
+    width: 100%;
+    height: 40px;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.deletionButton:hover
+{
+    background-color: transparent;
+    color:  #ff0000;
+
+}
+
+.inputBox{
+    text-align: right;
+    font-size: 20px;
+    height: 40px;
+    width: 97%;
+    box-shadow: -2px -4px 5px #a3a3a3;
+}
+.calculator {
+    height: 300px;
+}
+
+td {
+    padding: 7px 5px;
+}

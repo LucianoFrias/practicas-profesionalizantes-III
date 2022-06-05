@@ -1,0 +1,92 @@
+<!-- Autores: Cabrera, Thiago Francisco - Frias, Luciano - Souto, Agustin-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora SPA</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td colspan="4">
+                <input id="inputBox" class="inputBox" value="" disabled='disabled' type="text" placeholder="0">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn7" class="numericButtons buttons"> 7 </button>
+            </td>
+            <td>
+                <button id="btn8" class="numericButtons buttons"> 8 </button>
+            </td>
+            <td>
+                <button id="btn9" class="numericButtons buttons"> 9 </button>
+            </td>
+            <td>
+                <button id="btnOpenBracket" class="operationButtons buttons"> ( </button>
+            </td>
+            <td>
+                <button id="btnCloseBracket" class="operationButtons buttons"> ) </button>
+            </td>
+            <td>
+                <button id="btnSqrt" class="operationButtons buttons"> √ </button>
+            </td>
+            <td>
+                <button id="btnPlus" class="operationButtons buttons"> + </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn4" class="numericButtons buttons"> 4 </button>
+            </td>
+            <td>
+                <button id="btn5" class="numericButtons buttons"> 5 </button>
+            </td>
+            <td>
+                <button id="btn6" class="numericButtons buttons"> 6 </button>
+            </td>
+            <td>
+                <button id="btnMinus" class="operationButtons buttons"> - </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn1" class="numericButtons buttons"> 1 </button>
+            </td>
+            <td>
+                <button id="btn2" class="numericButtons buttons"> 2 </button>
+            </td>
+            <td>
+                <button id="btn3" class="numericButtons buttons"> 3 </button>
+            </td>
+            <td>
+                <button id="btnMult" class="operationButtons buttons"> * </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn0" class="numericButtons buttons"> 0 </button>
+            </td>
+            <td>
+                <button id="btnDecimal" class="numericButtons buttons"> . </button>
+            </td>
+            <td>
+                <button id="btnEqual" class="equalButton buttons"> = </button>
+            </td>
+            <td>
+                <button id="btnDiv" class="operationButtons buttons"> / </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <button id="btnDel" class="deletionButton"> Delete </button>
+            </td>
+        </tr>
+    </table>
+    <script src="https://unpkg.com/mathjs/lib/browser/math.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>
