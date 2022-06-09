@@ -1,0 +1,41 @@
+.numberButton
+{
+	padding: 10px;
+	font-size: 13px;
+	width: 35px;
+}
+
+.deleteButton
+{
+	padding: 6px 10px;
+}
+
+.display
+{
+	padding: 10px;
+}
+
+.blueButton
+{
+	background-color: cornflowerblue;
+}
+
+.yellowButton
+{
+	background-color: yellow;
+}
+
+.greenButton
+{
+	background-color: green;
+}
+
+.redButton
+{
+	background-color: red;
+}
+
+.layout
+{
+	margin-top: 10px;
+}
