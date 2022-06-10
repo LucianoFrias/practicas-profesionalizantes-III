@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="utf-8">
 </head>
 <body>
 
@@ -28,7 +29,16 @@ class Calculator
 
     calculate( expression )
     {
-        return eval(expression);
+        try
+        {
+            return eval(expression);    
+        }
+        catch
+        {
+            alert("ERROR!");
+            return "";
+        }
+        
     }
 }
 
@@ -38,12 +48,16 @@ class CalculatorView extends HTMLElement
     {
         super();
 
+        this.controller = new CalculatorController();
+
+
         this.calculatorBody = document.createElement("div");
         this.calculatorBody.classList.add("calculator");
 
         this.display = document.createElement("input");
         this.display.type = "text";
         this.display.className = "display"
+        this.display.placeholder = "0";
 
         this.button1 = document.createElement("button");
         this.button1.innerText = "1";
@@ -117,9 +131,12 @@ class CalculatorView extends HTMLElement
 
 
         this.buttonDelete = document.createElement("button");
-        this.buttonDelete.innerText = "DELETE";
+        this.buttonDelete.innerText = "DELETE ALL";
         this.buttonDelete.classList.add("deleteButton", "redButton");
 
+        this.buttonDeleteOne = document.createElement("button");
+        this.buttonDeleteOne.innerText = "DELETE ONE";
+        this.buttonDeleteOne.classList.add("deleteButton", "redButton");
 
 
         this.layout = document.createElement("table");
@@ -139,14 +156,98 @@ class CalculatorView extends HTMLElement
 
         // TEMPORAL EVENT LISTENERS
 
-        this.buttonEqual.addEventListener('click', () => { 
-            let calculator = new Calculator();
-            this.display.value = calculator.calculate(this.display.value);
-         })
+        this.buttonDecimal.addEventListener('click', () => {
+            this.controller.onclickbuttonDecimal()
+            this.display.value = this.controller.operator;
+        });
 
-         this.button3.addEventListener('click', () => {
-             this.display.value += 3;
-         })
+        this.button0.addEventListener('click', () => {
+            this.controller.onclickbutton0()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button1.addEventListener('click', () => {
+            this.controller.onclickbutton1()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button2.addEventListener('click', () => {
+            this.controller.onclickbutton2()
+            this.display.value = this.controller.operator;
+        });
+
+
+        this.button3.addEventListener('click', () => {
+            this.controller.onclickbutton3()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button4.addEventListener('click', () => {
+            this.controller.onclickbutton4()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button5.addEventListener('click', () => {
+            this.controller.onclickbutton5()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button6.addEventListener('click', () => {
+            this.controller.onclickbutton6()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button7.addEventListener('click', () => {
+            this.controller.onclickbutton7()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button8.addEventListener('click', () => {
+            this.controller.onclickbutton8()
+            this.display.value = this.controller.operator;
+        });
+
+        this.button9.addEventListener('click', () => {
+            this.controller.onclickbutton9()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonDelete.addEventListener('click', () => {
+            this.controller.onclickbuttonDelete()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonDeleteOne.addEventListener('click', () => {
+            this.controller.onclickbuttonDeleteOne()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonAdd.addEventListener('click', () => {
+            this.controller.onclickbuttonAdd()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonMinus.addEventListener('click', () => {
+            this.controller.onclickbuttonMinus()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonMultiply.addEventListener('click', () => {
+            this.controller.onclickbuttonMultiply()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonDivide.addEventListener('click', () => {
+            this.controller.onclickbuttonDivide()
+            this.display.value = this.controller.operator;
+        });
+
+        this.buttonEqual.addEventListener('click', () => {
+            this.controller.onclickbuttonEqual()
+            console.log(this.controller.operator)
+            this.display.value = this.controller.operator + "";
+        });
+
 
     }
 
@@ -175,8 +276,120 @@ class CalculatorView extends HTMLElement
 
         this.appendChild(this.display);
         this.appendChild(this.layout);
+        this.appendChild(this.buttonDeleteOne);
         this.appendChild(this.buttonDelete);
 
+
+        this.id = "x-calc"; 
+
+    }
+}
+
+class CalculatorController
+{
+    constructor()
+    {
+        this.operator = "";
+
+        this.calculator = new Calculator();
+    }
+
+    onclickbuttonDecimal()
+    {
+        this.operator += ".";
+    }
+
+    onclickbutton0()
+    {
+        this.operator += "0";
+    }
+
+    onclickbutton1()
+    {
+        this.operator += "1";
+    }
+
+    onclickbutton2()
+    {
+        this.operator += "2";
+    }
+
+    onclickbutton3()
+    {
+        this.operator += "3";
+    }
+
+    onclickbutton4()
+    {
+        this.operator += "4";
+    }
+
+    onclickbutton5()
+    {
+        this.operator += "5";
+    }
+
+    onclickbutton6()
+    {
+        this.operator += "6";
+    }
+
+    onclickbutton7()
+    {
+        this.operator += "7";
+    }
+
+    onclickbutton8()
+    {
+        this.operator += "8";
+    }
+
+    onclickbutton9()
+    {
+        this.operator += "9";
+    }
+
+    onclickbuttonDelete()
+    {
+        this.operator = "";
+    }
+
+    onclickbuttonDeleteOne()
+    {
+        this.operator = this.operator.slice(0, -1)
+    }
+
+    onclickbuttonAdd()
+    {
+        this.operator += "+";
+    }
+
+    onclickbuttonMinus()
+    {
+        this.operator += "-";
+    }
+
+    onclickbuttonMultiply()
+    {
+        this.operator += "*";
+    }
+
+    onclickbuttonDivide()
+    {
+        this.operator += "/";
+    }
+
+    onclickbuttonEqual()
+    {
+        
+        if (this.operator === "undefined" || this.operator === "")
+        {
+            this.operator == "";
+        }
+        else
+        {
+            this.operator = this.calculator.calculate(this.operator);
+        }    
     }
 }
 
