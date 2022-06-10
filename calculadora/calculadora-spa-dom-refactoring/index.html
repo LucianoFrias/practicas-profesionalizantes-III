@@ -38,6 +38,9 @@ class CalculatorView extends HTMLElement
     {
         super();
 
+        this.calculatorBody = document.createElement("div");
+        this.calculatorBody.classList.add("calculator");
+
         this.display = document.createElement("input");
         this.display.type = "text";
         this.display.className = "display"
@@ -58,10 +61,6 @@ class CalculatorView extends HTMLElement
         this.buttonAdd.innerText = "+";
         this.buttonAdd.classList.add("numberButton", "greenButton");        	
 
-
-
-
-
         this.button4 = document.createElement("button");
         this.button4.innerText = "4";
         this.button4.classList.add("numberButton", "blueButton");
@@ -77,9 +76,6 @@ class CalculatorView extends HTMLElement
         this.buttonMinus = document.createElement("button");
         this.buttonMinus.innerText = "-";
         this.buttonMinus.classList.add("numberButton", "greenButton");
-
-
-
 
 
         this.button7 = document.createElement("button");
@@ -140,6 +136,18 @@ class CalculatorView extends HTMLElement
 
         let lastCell = this.layout.insertRow().insertCell();
         lastCell.setAttribute("colspan", 4);
+
+        // TEMPORAL EVENT LISTENERS
+
+        this.buttonEqual.addEventListener('click', () => { 
+            let calculator = new Calculator();
+            this.display.value = calculator.calculate(this.display.value);
+         })
+
+         this.button3.addEventListener('click', () => {
+             this.display.value += 3;
+         })
+
     }
 
     connectedCallback()
@@ -172,19 +180,11 @@ class CalculatorView extends HTMLElement
     }
 }
 
-class CalculatorController
-{
-
-}
-
-
-
 
 customElements.define('x-calculator', CalculatorView );
 
 let calc = new CalculatorView();
 document.body.appendChild(calc);
-calc.calculate
 
     
 </script>
