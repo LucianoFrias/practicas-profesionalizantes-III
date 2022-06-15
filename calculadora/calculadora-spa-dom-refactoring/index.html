@@ -9,6 +9,16 @@
 </body>
 
 <script>
+
+/* Muy buen trabajo, luego habría que separar
+en archivos js para tener cada cosa independizada,
+pero va excelente. Hay un pequeño error a revisar
+en la función asociada al "deleteOne", en algunos
+casos falla tirando el error:
+Uncaught TypeError: this.operator.slice is not a function
+Lo demás excelente.
+*/
+
 function posicionarElementoEnTabla( tablaObj, nroFila, nroColumna, elemento )
 {
     /*Acceso a una posición específica de la tabla (fila,columna)
