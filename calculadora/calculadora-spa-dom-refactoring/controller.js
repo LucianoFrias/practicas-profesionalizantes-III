@@ -355,7 +355,7 @@ class CalculatorController
 
     onclickbuttonDeleteOne()
     {
-        this.operator = this.operator.slice(0, -1)
+        this.operator = this.operator.toString().slice(0, -1)
     }
 
     onclickbuttonAdd()
