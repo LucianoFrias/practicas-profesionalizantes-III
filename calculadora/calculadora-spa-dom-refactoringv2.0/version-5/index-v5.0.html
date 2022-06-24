@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<!--
+   
+	Refactoring 5
+	Example code for ISFT151 for Educational Purposes
+	Prácticas Profesionalizantes III
+
+	Copyright 2022 mgsantiago <mgsantiago@protonmail.com>
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+	MA 02110-1301, USA.
+
+
+-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Refactoring 5.0</title>
+</head>
+
+<style>
+
+.numberButton
+{
+	background-color: blue;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-radius: 6px;
+	width: 20px;
+}
+
+.operatorButton
+{
+	background-color: #00FF04;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	border-radius: 6px;
+	width: 20px;
+}
+
+.clearButton
+{
+	background-color: #FF0000;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	width: 20px;
+	border-radius: 6px;
+}
+
+.calculateButton
+{
+	background-color: #FFB900;
+	color: #FFFFFF;
+	border-color: #FFFFFF;
+	width: 20px;
+	border-radius: 6px;
+}
+
+.displayResult
+{
+	border-radius: 6px;
+}
+
+</style>
+
+<body>
+	
+</body>
+  
+<script type="text/javascript">
+
+class CalculatorModel
+{
+	constructor()
+	{
+
+	}
+
+	calculate(expression)
+	{
+		return fetch('./backend/calculate.php', { method:'post', body: JSON.stringify(expression) } ).then( response => response.json() );
+	}
+}
+
+
+
+class CalculatorController
+{
+	constructor(view, model)
+	{
+		this.innerView = view;
+		this.innerModel = model;
+	}
+
+	onButton0Click()
+	{   	
+		this.innerView.display.value += '0';
+	}
+
+	onButton1Click()
+	{   	
+		this.innerView.display.value += '1';
+	}
+
+	onButton2Click()
+	{   	
+		this.innerView.display.value += '2';
+	}
+
+	onButtonPlusClick()
+	{   	
+		this.innerView.display.value += '+';
+	}
+
+	onButtonCalculateClick()
+	{
+		this.innerModel.calculate(this.innerView.display.value).then( response => this.innerView.display.value=response );
+	}
+}
+
+class CalculatorView extends HTMLElement
+{
+	constructor(model)
+	{
+		super();
+
+		//Acquire model reference
+		this.innerModel = model;
+		this.innerController = new CalculatorController(this,this.innerModel);
+
+		//Create UI Elements from HTMLDocument
+		this.display = document.createElement('input');
+		this.display.type = 'text';
+		this.display.setAttribute('disabled','');
+		this.display.value = '';
+		this.display.classList.add('displayResult');
+
+		this.button0 = document.createElement('button');
+		this.button0.innerText = '0';
+		this.button0.classList.add('numberButton');
+
+		this.button1 = document.createElement('button');
+		this.button1.innerText = '1';
+		this.button1.classList.add('numberButton');
+
+		this.button2 = document.createElement('button');
+		this.button2.innerText = '2';
+		this.button2.classList.add('numberButton');
+
+		this.buttonPlus = document.createElement('button');
+		this.buttonPlus.innerText = '+';
+		this.buttonPlus.classList.add('operatorButton');
+
+		this.buttonCalculate = document.createElement('button');
+		this.buttonCalculate.innerText = '=';
+		this.buttonCalculate.classList.add('calculateButton');
+
+
+	}
+
+	connectedCallback()
+	{
+		//Append to itself
+		this.appendChild(this.display);
+		this.appendChild(this.button0);
+		this.appendChild(this.button1);
+		this.appendChild(this.button2);
+		this.appendChild(this.buttonPlus);
+		this.appendChild(this.buttonCalculate);
+
+		//Attach event-handler functions to each element
+		this.button0.addEventListener('click', (event) => this.innerController.onButton0Click(event) );
+		this.button1.addEventListener('click', (event) => this.innerController.onButton1Click(event) );
+		this.button2.addEventListener('click', (event) => this.innerController.onButton2Click(event) );
+		this.buttonPlus.addEventListener('click', (event) => this.innerController.onButtonPlusClick(event) );
+		this.buttonCalculate.addEventListener('click', (event) => this.innerController.onButtonCalculateClick(event) );
+	}
+}
+
+
+
+function startGUIApplication()
+{
+	let myCalculatorModel = new CalculatorModel();
+	let myCalculator = new CalculatorView(myCalculatorModel);
+	document.body.appendChild(myCalculator);
+}
+
+customElements.define('x-calculator-view', CalculatorView);
+
+window.addEventListener('load',startGUIApplication );
+
+
+</script>
+</html>

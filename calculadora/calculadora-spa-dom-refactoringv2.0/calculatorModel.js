@@ -7,15 +7,7 @@ class CalculatorModel
 
     calculate( expression )
     {
-        try
-        {
-            return eval(expression);    
-        }
-        catch
-        {
-            alert("SYNTAX ERROR!");
-            return "";
-        }
+            return fetch('./version-5/backend/calculate.php', { method: 'post', body: JSON.stringify(expression)}).then(response => response.json());   
         
     }
 }
