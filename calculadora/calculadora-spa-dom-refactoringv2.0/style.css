@@ -1,0 +1,53 @@
+
+
+
+.numberButton
+{
+	color: #fff;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 15px;
+	font-weight: bold;
+	width: 40px;
+	height: 40px;
+	border-radius: 5px;
+	box-shadow: 0 5px 5px #a3a3a3;
+	border-bottom: 1px solid #ffffffaa;
+}
+
+.deleteButton
+{
+	color: #fff;
+	padding: 6px 10px;
+}
+
+.display
+{
+	padding: 10px;
+	text-align: right;
+}
+
+.layout
+{
+	margin-top: 10px;
+}
+
+.blueButton
+{
+	background-color: #0000ff;
+}
+
+.yellowButton
+{
+	background-color: #f3b407;
+}
+
+.greenButton
+{
+	background-color: green;
+}
+
+.redButton
+{
+	background-color: red;
+}
+
