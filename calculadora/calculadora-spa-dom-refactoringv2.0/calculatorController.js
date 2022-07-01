@@ -105,7 +105,7 @@ class CalculatorController
         }
         else
         {
-            this.calculatorView.display.value = this.calculator.calculate(this.calculatorView.display.value).then(response => this.calculatorView.display.value = response);
+            this.calculator.calculate(this.calculatorView.display.value).then(response => this.calculatorView.display.value = response);
         }    
     }
 }
