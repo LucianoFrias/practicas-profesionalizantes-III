@@ -9,7 +9,10 @@ class FormController
 
 	onsubmit()
 	{
-		this.innerModel.submit(this.innerView.getFormValues()).then( response => alert('OK!!!'));
+		this.innerModel.submit(this.innerView.getFormValues()).then( response => {
+			console.log(response);
+			alert('Datos pasados!');
+		});
 	}
 }
 
