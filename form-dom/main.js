@@ -7,7 +7,14 @@ function main()
 	let myFormModel = new FormModel();
 	let myFormView = new FormView(myFormModel);
 
-	document.body.appendChild(myFormView);
+	let form = document.createElement('div');
+	form.id = 'form';
+
+
+	form.appendChild(myFormView);
+
+	document.body.appendChild(form)
+
 
 
 }

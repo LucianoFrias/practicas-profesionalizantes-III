@@ -1,3 +1,6 @@
+import { FormController } from './formController.js'
+
+
 class FormView extends HTMLElement
 {
 
@@ -6,7 +9,8 @@ class FormView extends HTMLElement
 		super();
 
 		this.innerModel = model;
-		//this.innerController = new FormController(this, this.innerModel);
+		this.innerController = new FormController(this, this.innerModel);
+
 
 		this.usernameInput = document.createElement('input');
 		this.usernameInput.type = 'text';
@@ -16,16 +20,33 @@ class FormView extends HTMLElement
 		this.passwordInput.type = 'text';
 		this.passwordInput.placeholder = 'Password';
 
+		this.confirmButton = document.createElement('button');
+	    this.confirmButton.innerText = 'Confirm';
+	    this.confirmButton.classList.add("confirmButton");
+
+
 		/*this.rememberPasswordCheckbox = document.createElement('input');
 		this.rememberPasswordCheckbox.type = 'checkbox';
 		this.rememberPasswordCheckbox.innerText = 'Remember login data';*/
+
+
+
+
 	}
 
 	connectedCallback()
 	{
 		this.appendChild(this.usernameInput);
 		this.appendChild(this.passwordInput);
+
 		//this.appendChild(this.rememberPasswordCheckbox);
+		this.appendChild(this.confirmButton);
+
+
+		this.confirmButton.addEventListener('click', () => this.innerController.onsubmit());
+
+
+
 	}
 
 	getFormValues()
