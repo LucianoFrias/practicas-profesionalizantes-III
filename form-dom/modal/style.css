@@ -1,0 +1,14 @@
+.login-modal
+{
+	background-color: red;
+	border: 1px solid transparent;
+	padding: 10px;
+	border-radius: 10px;
+	transition: all 0.5s;
+}
+
+.login-modal:hover
+{
+	background-color: transparent;
+	border: 1px solid red;
+}

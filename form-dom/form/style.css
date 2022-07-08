@@ -1,0 +1,43 @@
+#form
+{
+
+}
+
+
+input
+{
+	font-variant: small-caps;
+	padding: 15px;
+	border-radius: 15px;
+	margin-right: 10px;
+	display: block;
+	margin-bottom: 20px;
+	border: 1px solid crimson;
+	outline: crimson;
+	background-color: transparent;
+	transition: all 0.5s;
+}
+
+input:focus
+{
+	border: 1px solid red;
+	padding-right: 35px;
+}
+
+.confirmButton
+{
+	padding: 10px;
+	width: 100px;
+	border-radius:  5px;
+	margin-right: 5px; 
+	transition: 0.5s all;
+	background-color: red;
+	border:  1px solid transparent;
+
+}
+
+.confirmButton:hover
+{
+	background-color: transparent;
+	border:  1px solid red;
+}
