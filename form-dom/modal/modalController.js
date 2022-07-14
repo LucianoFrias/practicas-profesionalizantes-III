@@ -1,7 +1,0 @@
-
-class ModalController
-{
-
-}
-
-export { ModalController };
