@@ -1,0 +1,82 @@
+.login-modal
+{
+	background-color: red;
+	border: 1px solid transparent;
+	padding: 10px;
+	border-radius: 10px;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.login-modal:hover
+{
+	background-color: transparent;
+	border: 1px solid red;
+}
+
+#modalContent
+{
+	min-height: 200px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: auto;
+
+}
+
+#modalCloseButton
+{
+	margin-left: 20px;
+	background-color: white;
+	border: 1px solid red;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin: auto;
+	margin-top: 10px;
+	transition: all 0.5s;
+}
+
+#modalCloseButton:hover
+{
+	background-color: red;
+	color: white;
+	border: 1px solid red;
+}
+
+#usernameInput
+{
+	padding: 5px 10px;
+	margin-bottom: 10px;
+}
+
+#passInput
+{
+   padding: 5px 10px
+}
+
+#ConfirmBtn
+{
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	background-color: white;
+	cursor: pointer;	
+	transition: all 0.5s;
+}
+
+
+#ConfirmBtn:hover
+{
+	background-color: black;
+	color: white;
+}
+
+#modalWindow
+{
+	width: 20%;
+	padding: 40px;
+	margin: auto;
+	background-color: white;
+}
