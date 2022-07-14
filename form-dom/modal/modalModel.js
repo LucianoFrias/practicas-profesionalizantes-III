@@ -1,7 +1,0 @@
-
-class ModalModel
-{
-
-}
-
-export { ModalModel };
