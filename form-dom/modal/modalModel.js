@@ -1,0 +1,7 @@
+
+class ModalModel
+{
+
+}
+
+export { ModalModel };
