@@ -64,7 +64,7 @@ class AppView extends HTMLElement
         this.dropdownDiv = document.createElement('div');
         this.dropdownAnchor = document.createElement('a');
         this.dropdownAnchor.className = "w3-bar-item w3-button";
-        this.dropdownAnchor.addEventListener('click', myAccordion);
+        this.dropdownAnchor.addEventListener('click', ()=>{myAccordion('demo')});
         this.dropdownAnchor.href = "javascript:void(0)";
         this.dropdownAnchor.innerText = "Dropdown";
 
@@ -90,17 +90,40 @@ class AppView extends HTMLElement
         // W3 CLOSE
 
         this.w3Close = document.createElement('div');
+        this.w3Close.className = "w3-overlay w3-hide-large w3-animate-opacity";
+        this.w3Close.addEventListener('click', w3_close);
+        this.w3Close.style = "cursor:pointer";
+        this.w3Close.id = "myOverlay";
 
         // MAIN
 
         this.w3MainContainer = document.createElement('div');
+        this.w3MainContainer.className = "w3-main";
+        this.w3MainContainer.style = "margin-left: 250px;";
+
 
         this.myTopContainer = document.createElement('div');
+        this.myTopContainer.id = "myTop";
+        this.myTopContainer.className = "w3-container w3-top w3-theme w3-large"
         this.myTopContainerP = document.createElement('p');
         this.myTopContainerPIcon = document.createElement('i');
+        this.myTopContainerPIcon.className = "fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge";
+        this.myTopContainerPIcon.addEventListener('click', w3_open);
         this.myTopContainerPSpan = document.createElement('span');
+        this.myTopContainerPSpan.id = "myIntro";
+        this.myTopContainerPSpan.className = "w3-hide";
+        this.myTopContainerPSpan.innerText = "W3.CSS: Introduction";
+
+        this.w3MainHeader = document.createElement('header');
+        this.w3MainHeader.className = 'w3-container w3-theme my-container';
+        this.w3MainHeader.style = 'padding: 64px 32px';
+        
+        this.w3MainHeaderH1 = document.createElement('h1');
+        this.w3MainHeaderH1.className = 'w3-xxxlarge';
+        this.w3MainHeaderH1.innerText = 'W3.CSS' 
 
         this.w3Container = document.createElement('div');
+        this.w3Container.className = "w3-container";
     }
 
 
@@ -142,6 +165,10 @@ class AppView extends HTMLElement
 
         this.myTopContainerP.appendChild(this.myTopContainerPSpan);
 
+        this.w3MainContainer.appendChild(this.w3MainHeader);
+
+        this.w3MainHeader.appendChild(this.w3MainHeaderH1);
+
         document.body.appendChild(this.w3Container);
 
 
@@ -150,5 +177,42 @@ class AppView extends HTMLElement
 }
 
 customElements.define('x-app', AppView);
+
+// Open and close the sidebar on medium and small screens
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+  
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+  
+  // Change style of top container on scroll
+  window.onscroll = function() {myFunction()};
+  function myFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+      document.getElementById("myIntro").classList.add("w3-show-inline-block");
+    } else {
+      document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+      document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+    }
+  }
+  
+  // Accordions
+  function myAccordion(id) {
+    let x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      x.previousElementSibling.className += " w3-theme";
+    } else { 
+      x.className = x.className.replace("w3-show", "");
+      x.previousElementSibling.className = 
+      x.previousElementSibling.className.replace(" w3-theme", "");
+    }
+  }
+
 
 export { AppView }
