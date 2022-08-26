@@ -9,6 +9,4 @@ function main()
     document.body.appendChild(view);
 }
 
-
-
 window.addEventListener('load', main);

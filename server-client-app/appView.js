@@ -124,6 +124,7 @@ class AppView extends HTMLElement
 
         this.w3Container = document.createElement('div');
         this.w3Container.className = "w3-container";
+
     }
 
 
@@ -169,8 +170,7 @@ class AppView extends HTMLElement
 
         this.w3MainHeader.appendChild(this.w3MainHeaderH1);
 
-        document.body.appendChild(this.w3Container);
-
+        this.w3MainContainer.appendChild(this.w3Container);
 
 
     }
