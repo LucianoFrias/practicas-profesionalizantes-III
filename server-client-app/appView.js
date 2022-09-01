@@ -1,4 +1,5 @@
 import { AppController } from "./appController.js";
+import { ListaDesplegable } from './ListaDesplegable.js';
 
 
 
@@ -11,8 +12,8 @@ class AppView extends HTMLElement
         this.innerModel = model;
         this.innerController = new AppController(this, this.innerModel);
 
-
         // NAV
+
         this.nav = document.createElement('nav');
         this.nav.className = "w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card";
         this.nav.style = "z-index:3;width:250px;"
