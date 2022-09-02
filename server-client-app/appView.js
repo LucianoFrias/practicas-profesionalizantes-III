@@ -1,5 +1,5 @@
 import { AppController } from "./appController.js";
-import { ListaDesplegable } from './ListaDesplegable.js';
+import { BotonDesplegable } from './BotonDesplegable.js';
 
 
 
@@ -11,6 +11,10 @@ class AppView extends HTMLElement
         super();
         this.innerModel = model;
         this.innerController = new AppController(this, this.innerModel);
+
+        this.botonDesplegable = new BotonDesplegable();
+        this.botonDesplegable.addItem('Link 1');
+        this.botonDesplegable.addItem('Link 2');
 
         // NAV
 
@@ -62,31 +66,6 @@ class AppView extends HTMLElement
         this.fifthAnchor.href = "#";
         this.fifthAnchor.innerText = "Link 5";
 
-        this.dropdownDiv = document.createElement('div');
-        this.dropdownAnchor = document.createElement('a');
-        this.dropdownAnchor.className = "w3-bar-item w3-button";
-        this.dropdownAnchor.addEventListener('click', ()=>{myAccordion('demo')});
-        this.dropdownAnchor.href = "javascript:void(0)";
-        this.dropdownAnchor.innerText = "Dropdown";
-
-        this.dropdownIcon = document.createElement('i');
-        this.dropdownIcon.className = "fa fa-caret-down"
-
-        this.w3HideDiv = document.createElement('div');
-        this.w3HideDiv.id = "demo";
-        this.w3HideDiv.className = "w3-hide";
-        this.firstHideAnchor = document.createElement('a');
-        this.firstHideAnchor.className = "w3-bar-item w3-button";
-        this.firstHideAnchor.href = "#";
-        this.firstHideAnchor.innerText = "Link";
-        this.secondHideAnchor = document.createElement('a');
-        this.secondHideAnchor.className = "w3-bar-item w3-button";
-        this.secondHideAnchor.href = "#";
-        this.secondHideAnchor.innerText = "Link";
-        this.thirdHideAnchor = document.createElement('a');
-        this.thirdHideAnchor.className = "w3-bar-item w3-button";
-        this.thirdHideAnchor.href = "#";
-        this.thirdHideAnchor.innerText = "Link";
 
         // W3 CLOSE
 
@@ -145,15 +124,7 @@ class AppView extends HTMLElement
         this.nav.appendChild(this.fourthAnchor);
         this.nav.appendChild(this.fifthAnchor);
 
-        this.nav.appendChild(this.dropdownDiv);
-
-        this.dropdownDiv.appendChild(this.dropdownAnchor);
-        this.dropdownAnchor.appendChild(this.dropdownIcon);
-
-        this.dropdownDiv.appendChild(this.w3HideDiv);
-        this.w3HideDiv.appendChild(this.firstHideAnchor);
-        this.w3HideDiv.appendChild(this.secondHideAnchor);
-        this.w3HideDiv.appendChild(this.thirdHideAnchor);
+        this.nav.appendChild(this.botonDesplegable)
 
         document.body.appendChild(this.w3Close);
 
@@ -202,18 +173,5 @@ function w3_open() {
     }
   }
   
-  // Accordions
-  function myAccordion(id) {
-    let x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-      x.previousElementSibling.className += " w3-theme";
-    } else { 
-      x.className = x.className.replace("w3-show", "");
-      x.previousElementSibling.className = 
-      x.previousElementSibling.className.replace(" w3-theme", "");
-    }
-  }
-
 
 export { AppView }
