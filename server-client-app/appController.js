@@ -7,6 +7,8 @@ class AppController
         this.innerModel = model;
         this.innerView = view;
     }
+
+   
 }
 
 export { AppController }

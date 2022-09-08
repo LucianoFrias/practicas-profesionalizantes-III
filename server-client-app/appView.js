@@ -21,7 +21,6 @@ class AppView extends HTMLElement
         this.nav = document.createElement('nav');
         this.nav.className = "w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card";
         this.nav.style = "z-index:3;width:250px;"
-        this.nav.id = "mySidebar"
 
         this.w3IconAnchor = document.createElement('a');
         this.w3IconAnchor.className = "w3-bar-item w3-button w3-border-bottom w3-large";
@@ -34,11 +33,13 @@ class AppView extends HTMLElement
         this.closeIconAnchor = document.createElement('a');
         this.closeIconAnchor.className = "w3-bar-item w3-button w3-hide-large w3-large";
         this.closeIconAnchor.href = "javascript:void(0)";
-        this.closeIconAnchor.addEventListener('click', w3_close);
+        this.closeIconAnchor.addEventListener('click', () => this.closeSidebar());
         this.closeIconAnchor.innerText = "Close";
 
         this.closeIconImg = document.createElement('i');
         this.closeIconImg.className = "fa fa-remove";
+
+        // Sidebar Anchors
 
         this.homeAnchor = document.createElement('a');
         this.homeAnchor.className = "w3-bar-item w3-button w3-teal";
@@ -67,20 +68,20 @@ class AppView extends HTMLElement
         this.fifthAnchor.innerText = "Link 5";
 
 
-        // W3 CLOSE
+        // Sidebar Close button 
 
         this.w3Close = document.createElement('div');
         this.w3Close.className = "w3-overlay w3-hide-large w3-animate-opacity";
-        this.w3Close.addEventListener('click', w3_close);
+        this.w3Close.addEventListener('click', () => this.closeSidebar() );
         this.w3Close.style = "cursor:pointer";
-        this.w3Close.id = "myOverlay";
 
-        // MAIN
+        // MAIN 
 
         this.w3MainContainer = document.createElement('div');
         this.w3MainContainer.className = "w3-main";
         this.w3MainContainer.style = "margin-left: 250px;";
 
+        // Top Container on scroll
 
         this.myTopContainer = document.createElement('div');
         this.myTopContainer.id = "myTop";
@@ -88,11 +89,15 @@ class AppView extends HTMLElement
         this.myTopContainerP = document.createElement('p');
         this.myTopContainerPIcon = document.createElement('i');
         this.myTopContainerPIcon.className = "fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge";
-        this.myTopContainerPIcon.addEventListener('click', w3_open);
+        this.myTopContainerPIcon.addEventListener('click', ()=> this.openSidebar() );
         this.myTopContainerPSpan = document.createElement('span');
         this.myTopContainerPSpan.id = "myIntro";
         this.myTopContainerPSpan.className = "w3-hide";
         this.myTopContainerPSpan.innerText = "W3.CSS: Introduction";
+
+        window.addEventListener('scroll', () => this.showTopContainer())
+
+        // Main Header
 
         this.w3MainHeader = document.createElement('header');
         this.w3MainHeader.className = 'w3-container w3-theme my-container';
@@ -101,6 +106,8 @@ class AppView extends HTMLElement
         this.w3MainHeaderH1 = document.createElement('h1');
         this.w3MainHeaderH1.className = 'w3-xxxlarge';
         this.w3MainHeaderH1.innerText = 'W3.CSS' 
+
+        // Empty container waiting for content...
 
         this.w3Container = document.createElement('div');
         this.w3Container.className = "w3-container";
@@ -144,34 +151,36 @@ class AppView extends HTMLElement
 
         this.w3MainContainer.appendChild(this.w3Container);
 
+    }
 
+    
+    // Open the sidebar on medium and small screens 
+
+    openSidebar() 
+    {
+      this.nav.style.display = "block";
+    }
+    
+    // Close the sidebar on medium and small screens 
+
+    closeSidebar()
+    {
+      this.nav.style.display = "none";
+    }
+
+    // Show top container after scrolling.
+    showTopContainer() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        this.myTopContainer.classList.add("w3-card-4", "w3-animate-opacity");
+        this.myTopContainerPSpan.classList.add("w3-show-inline-block");
+      } else {
+        this.myTopContainerPSpan.classList.remove("w3-show-inline-block");
+        this.myTopContainer.classList.remove("w3-card-4", "w3-animate-opacity");
+      }
     }
 }
 
 customElements.define('x-app', AppView);
 
-// Open and close the sidebar on medium and small screens
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-  
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-  }
-  
-  // Change style of top container on scroll
-  window.onscroll = function() {myFunction()};
-  function myFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-      document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
-      document.getElementById("myIntro").classList.add("w3-show-inline-block");
-    } else {
-      document.getElementById("myIntro").classList.remove("w3-show-inline-block");
-      document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
-    }
-  }
-  
 
 export { AppView }

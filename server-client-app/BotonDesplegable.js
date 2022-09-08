@@ -1,19 +1,14 @@
 
 
-// NOT COMPLETED YET!
-
-
-
-    
-
-
 class BotonDesplegableController
 {
 	constructor( view )
 	{
 		this.innerView = view;
 	}
-	
+
+	// Oculta o muestra los elementos de la lista desplegable.
+
 	onclick()
 	{
 	  let x = this.innerView.container;
@@ -23,8 +18,7 @@ class BotonDesplegableController
 		this.innerView.button.style.backgroundColor = '#009688';
 		this.innerView.button.style.color = '#ffffff';
 	  } else { 
-		x.className = x.className.replace("w3-show", "");
-		//x.previousElementSibling.className = 
+		x.className = x.className.replace("w3-show", ""); 
 		x.previousElementSibling.className.replace(" w3-theme", "");
 		this.innerView.button.style = 'background-color: none';
 	  }
