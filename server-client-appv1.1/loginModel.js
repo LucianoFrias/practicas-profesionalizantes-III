@@ -1,0 +1,6 @@
+class LoginModel
+{
+
+}
+
+export { LoginModel }
