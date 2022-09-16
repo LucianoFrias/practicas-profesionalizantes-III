@@ -1,6 +1,0 @@
-class LoginModel
-{
-
-}
-
-export { LoginModel }
